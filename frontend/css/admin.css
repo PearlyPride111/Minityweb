@@ -1,0 +1,348 @@
+/* frontend/css/admin.css */
+
+body.admin-body-bg {
+    /* background-color: #e9ecef; */
+}
+
+.admin-page .auth-card {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+}
+.admin-choice-buttons .btn {
+    margin-bottom: 10px;
+}
+.admin-choice-buttons .btn:last-child {
+    margin-bottom: 0;
+}
+
+.admin-page h2 {
+    text-align: center;
+    font-family: var(--font-headings);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+#establishmentManagementSection h2, /* Приветственное сообщение */
+#placeManagementSection h2 { /* Заголовок секции управления местами */
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    text-align: left;
+}
+
+#establishmentManagementSection h3,
+#placeManagementSection h3 { /* Подзаголовки карточек/секций */
+    font-family: var(--font-headings);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color-light);
+    padding-bottom: 10px;
+}
+.dark-theme #establishmentManagementSection h3,
+.dark-theme #placeManagementSection h3 {
+    border-bottom-color: var(--border-color-dark);
+}
+
+#adminHallList h4,
+#adminAddHallForm h4,
+#adminMenuList h4,
+#editHallModal h3,
+.admin-place-form-container h4, /* Заголовок формы добавления/редактирования места */
+#adminHallMapPreviewContainer h4, /* Заголовок предпросмотра карты */
+#placesListAdminContainer h4 { /* Заголовок списка мест */
+    font-family: var(--font-headings);
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+#editHallModal h3,
+#adminPlaceFormTitle { /* Центрируем заголовок модалки и формы места */
+    text-align: center;
+    font-size: 1.5em;
+}
+
+
+.establishment-details-admin .form-group,
+.sub-form .form-group {
+    margin-bottom: 18px;
+}
+.establishment-details-admin label,
+.sub-form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+}
+
+.form-control-admin {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    font-family: var(--font-main);
+    background-color: var(--card-bg-light);
+    color: var(--text-color-light);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.form-control-admin:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(124, 77, 255, 0.25);
+    outline: none;
+}
+.dark-theme .form-control-admin {
+    background-color: #333740;
+    color: var(--text-color-dark);
+    border-color: var(--border-color-dark);
+}
+.dark-theme .form-control-admin:focus {
+    border-color: var(--primary-color-dark-theme);
+    box-shadow: 0 0 0 0.2rem rgba(158, 123, 255, 0.25);
+}
+
+.establishment-details-admin textarea.form-control-admin,
+.sub-form textarea.form-control-admin {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group-checkbox {
+    display: flex;
+    align-items: center;
+}
+.form-group-checkbox .form-check-input {
+    margin-right: 8px;
+    width: auto;
+    height: auto;
+}
+.form-group-checkbox .form-check-label {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.admin-divider {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 0;
+    border-top: 1px solid var(--border-color-light);
+}
+.dark-theme .admin-divider {
+    border-top-color: var(--border-color-dark);
+}
+
+#hallsListContainer {
+    list-style-type: none;
+    padding-left: 0;
+}
+#hallsListContainer li.hall-list-item {
+    padding: 10px;
+    border-bottom: 1px dashed var(--border-color-light);
+    font-size: 0.95em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#hallsListContainer li:last-child {
+    border-bottom: none;
+}
+.dark-theme #hallsListContainer li.hall-list-item {
+    border-bottom-color: var(--border-color-dark);
+}
+.hall-list-item .hall-info {
+    flex-grow: 1;
+    margin-right: 10px; /* Отступ от кнопок */
+}
+.hall-list-item .hall-info small {
+    display: block;
+    color: var(--text-color-muted-light);
+    font-size: 0.9em;
+}
+.dark-theme .hall-list-item .hall-info small {
+    color: var(--text-color-muted-dark);
+}
+.hall-list-item .hall-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+}
+.hall-list-item .hall-actions .btn-sm {
+    padding: 5px 10px;
+    font-size: 0.8em;
+}
+
+.hall-management-admin p,
+.menu-management-admin p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-size: 0.95em;
+    color: var(--text-color-muted-light);
+}
+.dark-theme .hall-management-admin p,
+.dark-theme .menu-management-admin p {
+    color: var(--text-color-muted-dark);
+}
+
+.error-message { /* Общий стиль для ошибок форм/секций */
+    color: #dc3545;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.status-message {
+    margin-top: 15px; 
+    font-size: 0.9em;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+.status-message.success {
+    color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb;
+}
+.dark-theme .status-message.success {
+    color: #a3d7b4; background-color: #264d33; border: 1px solid #385e43;
+}
+.status-message.error {
+    color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb;
+}
+.dark-theme .status-message.error {
+    color: #f5c6cb; background-color: #5c2a30; border: 1px solid #7a3b42;
+}
+
+.btn-success { background-color: #28a745; color: white; }
+.btn-success:hover { background-color: #218838; }
+.dark-theme .btn-success { background-color: #3fa85b; color: #fff; }
+.dark-theme .btn-success:hover { background-color: #35904c; }
+
+.btn-light { /* Для кнопки "Отмена" */
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #ced4da;
+}
+.btn-light:hover { background-color: #e2e6ea; }
+.dark-theme .btn-light {
+    background-color: #495057;
+    color: #f8f9fa;
+    border-color: #6c757d;
+}
+.dark-theme .btn-light:hover { background-color: #5a6268; }
+
+
+/* Стили для модального окна редактирования зала */
+#editHallModal .modal-content {
+    max-width: 550px;
+}
+
+/* === СТИЛИ ДЛЯ СЕКЦИИ УПРАВЛЕНИЯ МЕСТАМИ === */
+#placeManagementSection {
+    /* Стили для всей секции, если нужны */
+}
+#placeManagementSection .mb-20 { /* Утилита для отступа снизу */
+    margin-bottom: 20px;
+}
+
+.place-editor-layout {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Для адаптивности */
+}
+
+.admin-hall-preview-container {
+    flex: 2; /* Предпросмотр занимает больше места */
+    min-width: 300px; /* Минимальная ширина для предпросмотра */
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    background-color: var(--bg-light);
+}
+.dark-theme .admin-hall-preview-container {
+    background-color: #22252e;
+    border-color: var(--border-color-dark);
+}
+
+.admin-hall-map { /* Аналогично .hall-map на странице заведения */
+    position: relative;
+    width: 100%; /* Растягивается по .admin-hall-preview-container */
+    min-height: 300px; /* Минимальная высота */
+    background-color: var(--card-bg-light);
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05); /* Внутренняя тень */
+    border-radius: 4px;
+}
+.dark-theme .admin-hall-map {
+    background-color: var(--card-bg-dark);
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+}
+.admin-hall-map .place { /* Стили для .place уже есть, но можно переопределить */
+    /* Для админки можно сделать места чуть крупнее или с другой рамкой для выбора */
+}
+.admin-hall-map .place.selected-for-edit { /* Новый класс для выделения редактируемого места */
+    outline: 3px dashed var(--primary-color) !important; /* Важно, чтобы перебить .selected */
+    box-shadow: 0 0 10px var(--primary-color) !important;
+    z-index: 15;
+}
+.dark-theme .admin-hall-map .place.selected-for-edit {
+    outline-color: var(--primary-color-dark-theme) !important;
+    box-shadow: 0 0 10px var(--primary-color-dark-theme) !important;
+}
+
+
+.admin-place-form-container {
+    flex: 1; /* Форма занимает меньше места */
+    min-width: 280px; /* Минимальная ширина для формы */
+    /* Стили .sub-form уже должны применяться */
+}
+.admin-place-form-container .form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.admin-place-form-container .form-actions .btn {
+    flex-grow: 1; /* Кнопки занимают равное пространство */
+}
+
+
+#placesListContainerAdmin { /* Список мест под картой/формой */
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+#placesListContainerAdmin li.place-list-item-admin {
+    padding: 8px 10px;
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius);
+    margin-bottom: 8px;
+    background-color: var(--card-bg-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.dark-theme #placesListContainerAdmin li.place-list-item-admin {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+}
+#placesListContainerAdmin .place-list-item-admin span {
+    font-size: 0.9em;
+    margin-right: 10px;
+}
+#placesListContainerAdmin .place-list-item-admin .actions {
+    display: flex;
+    gap: 5px;
+}
+
+
+@media (max-width: 992px) { 
+    .place-editor-layout {
+        flex-direction: column; /* Форма и предпросмотр друг под другом */
+    }
+    .admin-hall-preview-container, .admin-place-form-container {
+        flex: none; /* Сброс flex */
+        width: 100%;
+    }
+}
+
+/* Адаптивность общая (оставляем как было) */
+@media (max-width: 768px) { /* ... */ }
+@media (max-width: 480px) { /* ... */ }

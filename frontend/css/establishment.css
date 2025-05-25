@@ -1,0 +1,441 @@
+/* frontend/css/establishment.css */
+
+/* Общие стили для страницы заведения */
+.establishment-page .card {
+    margin-bottom: 30px;
+}
+
+/* Блок основной информации о заведении */
+.establishment-intro-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.establishment-main-image {
+    flex: 0 0 40%; 
+    max-width: 450px; 
+    border-radius: var(--border-radius);
+    overflow: hidden; 
+}
+.establishment-main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.establishment-summary {
+    flex: 1;
+}
+.establishment-summary h1 {
+    font-family: var(--font-headings);
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-color-light);
+}
+.dark-theme .establishment-summary h1 {
+    color: var(--text-color-dark);
+}
+
+.establishment-type-badge {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.dark-theme .establishment-type-badge {
+    background-color: var(--primary-color-dark-theme);
+    color: var(--bg-dark);
+}
+
+.establishment-description-text {
+    font-size: 1em;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: var(--text-color-muted-light);
+}
+.dark-theme .establishment-description-text {
+    color: var(--text-color-muted-dark);
+}
+
+.establishment-meta p {
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    color: var(--text-color-muted-light);
+}
+.dark-theme .establishment-meta p {
+    color: var(--text-color-muted-dark);
+}
+.establishment-meta p strong {
+    font-weight: 500;
+    color: var(--text-color-light);
+}
+.dark-theme .establishment-meta p strong {
+    color: var(--text-color-dark);
+}
+
+/* Вкладки */
+.tabs-navigation {
+    display: flex;
+    border-bottom: 1px solid var(--border-color-light);
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Для переноса вкладок на мобильных, если их много */
+}
+.dark-theme .tabs-navigation {
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.tab-link {
+    padding: 12px 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: var(--font-headings);
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--text-color-muted-light);
+    border-bottom: 3px solid transparent; 
+    margin-bottom: -1px; 
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+.dark-theme .tab-link {
+    color: var(--text-color-muted-dark);
+}
+.tab-link:hover {
+    color: var(--primary-color);
+}
+.dark-theme .tab-link:hover {
+    color: var(--primary-color-dark-theme);
+}
+.tab-link.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+.dark-theme .tab-link.active {
+    color: var(--primary-color-dark-theme);
+    border-bottom-color: var(--primary-color-dark-theme);
+}
+
+.tab-pane {
+    display: none; 
+    padding-top: 10px;
+    animation: fadeIn 0.5s ease-in-out; /* Плавное появление вкладки */
+}
+.tab-pane.active {
+    display: block; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Стили для вкладки "План зала" */
+#hall-plan h2, #menu h2, #details h2 {
+    font-family: var(--font-headings);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.hall-selector {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Для мобильных */
+}
+.hall-selector label {
+    font-weight: 500;
+    margin-right: 5px; /* Небольшой отступ */
+}
+.hall-selector select {
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color-light);
+    min-width: 200px;
+    font-size: 1em;
+    background-color: var(--card-bg-light); 
+}
+.dark-theme .hall-selector select {
+    background-color: #333740;
+    color: var(--text-color-dark);
+    border-color: var(--border-color-dark);
+}
+
+.hall-map-container {
+    background-color: var(--bg-light); 
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius);
+    padding: 15px; 
+    margin-bottom: 30px;
+    position: relative; 
+    overflow: hidden;   
+    min-height: 350px; 
+    max-height: 600px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.dark-theme .hall-map-container {
+    background-color: #22252e; 
+    border-color: var(--border-color-dark);
+}
+
+.hall-map {
+    position: relative;
+    width: 600px; 
+    height: 400px;
+    background-color: var(--card-bg-light); 
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 4px; 
+}
+.dark-theme .hall-map {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.hall-map-placeholder {
+    text-align: center;
+    padding: 50px 0;
+    color: var(--text-color-muted-light);
+    width: 100%;
+}
+.dark-theme .hall-map-placeholder {
+     color: var(--text-color-muted-dark);
+}
+
+.place {
+    position: absolute;
+    width: 45px; 
+    height: 45px;
+    cursor: pointer;
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out;
+    border-radius: 4px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.place:hover:not(.place-booked) { 
+    transform: scale(1.15);
+    z-index: 10;
+}
+.place-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.place.place-free:hover {
+    filter: brightness(0.9);
+}
+.place.selected {
+    transform: scale(1.1); 
+    outline: 3px solid var(--primary-color);
+    outline-offset: 1px;
+}
+.dark-theme .place.selected {
+    outline-color: var(--primary-color-dark-theme);
+}
+.place.place-booked {
+    cursor: not-allowed; 
+}
+
+/* Стили для разных типов мест (примеры) */
+.place-type-table-2 { /* Для стола на 2-х */
+    /* background-color: #add8e6; /* Светло-голубой фон для примера */
+    /* width: 40px; height: 60px; /* Могут быть другие размеры */
+}
+.place-type-table-4 { /* Для стола на 4-х */
+    /* background-color: #90ee90; /* Светло-зеленый фон */
+    /* width: 60px; height: 60px; */
+}
+.place-type-desk { /* Для рабочего места */
+    /* background-color: #f0e68c; /* Хаки */
+    /* width: 50px; height: 30px; */
+}
+/* Добавьте больше стилей для ваших place.type... */
+
+
+.place-label {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65em;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    pointer-events: none;
+    z-index: 11; 
+}
+.place:hover .place-label {
+    opacity: 1;
+    visibility: visible;
+}
+.dark-theme .place-label {
+    background-color: rgba(255,255,255,0.8);
+    color: #222;
+}
+
+.booking-controls {
+    border-top: 1px solid var(--border-color-light);
+    padding-top: 25px;
+    margin-top: 25px;
+}
+.dark-theme .booking-controls {
+    border-top-color: var(--border-color-dark);
+}
+.booking-controls h3 {
+    font-family: var(--font-headings);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+.booking-controls .form-group {
+    margin-bottom: 15px;
+}
+.booking-controls label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.booking-controls input[type="datetime-local"],
+.booking-controls input[type="number"] {
+    width: 100%;
+    max-width: 300px; 
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color-light);
+    font-size: 1em;
+    background-color: var(--card-bg-light);
+}
+.dark-theme .booking-controls input[type="datetime-local"],
+.dark-theme .booking-controls input[type="number"] {
+    background-color: #333740;
+    color: var(--text-color-dark);
+    border-color: var(--border-color-dark);
+}
+
+.selected-places-info {
+    margin: 15px 0;
+    font-size: 0.95em;
+}
+#selectedPlacesList {
+    font-style: italic;
+    color: var(--text-color-muted-light);
+    margin-top: 5px; 
+    display: block; 
+}
+.dark-theme #selectedPlacesList {
+    color: var(--text-color-muted-dark);
+}
+
+/* Стили для вкладки "Меню" */
+.menu-category {
+    margin-bottom: 30px;
+}
+.menu-category h3 {
+    font-family: var(--font-headings);
+    font-size: 1.5em;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color-light);
+    margin-bottom: 15px;
+}
+.dark-theme .menu-category h3 {
+    border-bottom-color: var(--border-color-dark);
+}
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e0e0e0; 
+}
+.dark-theme .menu-item {
+    border-bottom-color: #444;
+}
+.menu-item:last-child {
+    border-bottom: none;
+}
+.menu-item-info h4 {
+    font-family: var(--font-main); 
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.menu-item-description {
+    font-size: 0.85em;
+    color: var(--text-color-muted-light);
+    max-width: 80%; 
+}
+.dark-theme .menu-item-description {
+    color: var(--text-color-muted-dark);
+}
+.menu-item-price {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--primary-color);
+    white-space: nowrap; 
+    padding-left: 15px; 
+}
+.dark-theme .menu-item-price {
+    color: var(--primary-color-dark-theme);
+}
+
+/* Адаптивность для страницы заведения */
+@media (max-width: 768px) {
+    .establishment-intro-layout {
+        flex-direction: column;
+    }
+    .establishment-main-image {
+        flex: 0 0 auto; 
+        width: 100%;  
+        max-width: none;
+        margin-bottom: 20px;
+    }
+    .establishment-summary h1 {
+        font-size: 2em;
+    }
+    .tabs-navigation {
+        overflow-x: auto; 
+        white-space: nowrap;
+    }
+    .tab-link {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+    .menu-item {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+    .menu-item-price {
+        padding-left: 0;
+        margin-top: 5px;
+    }
+    .menu-item-description {
+        max-width: 100%;
+    }
+    .hall-map { 
+        width: 100%; /* Карта будет занимать доступную ширину */
+        max-width: 100%; /* Убираем фиксированную ширину для мобильных */
+        height: 300px; /* Можно задать высоту или оставить auto */
+        /* Если используете aspect-ratio, он должен хорошо работать */
+    }
+    .place { 
+        width: 35px; /* Уменьшаем места для мобильных */
+        height: 35px;
+    }
+    .place-label {
+        font-size: 0.6em;
+        bottom: -15px; /* Корректируем позицию метки */
+    }
+}

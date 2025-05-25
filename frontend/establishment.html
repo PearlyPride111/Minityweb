@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Название Заведения - Minity</title> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/establishment.css">
+</head>
+<body class="light-theme">
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-link"><div class="logo">Minity</div></a>
+            <nav>
+                <button id="theme-toggle-btn" class="btn btn-theme-toggle" title="Сменить тему">Сменить тему</button>
+                <button id="login-register-btn-header" class="btn btn-secondary" title="Войти или зарегистрироваться">Войти</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="establishment-page section-padding">
+        <div class="container">
+            <section class="establishment-intro card">
+                <div class="establishment-intro-layout">
+                    <div class="establishment-main-image">
+                        <img src="https://i.ibb.co/QRYvJTp/vista.jpg" alt="Ресторан Vista" id="establishmentImage"> </div>
+                    <div class="establishment-summary">
+                        <h1 id="establishmentName">Ресторан "Vista"</h1> <p class="establishment-type-badge" id="establishmentType">Ресторан</p> <p class="establishment-description-text" id="establishmentDescription">
+                            Панорамный ресторан "Vista" предлагает изысканные блюда европейской кухни и потрясающий вид на город. Идеальное место для романтического ужина или деловой встречи.
+                        </p>
+                        <div class="establishment-meta">
+                            <p><strong>Адрес:</strong> <span id="establishmentAddress">ул. Главная, 1, Город</span></p>
+                            <p><strong>Часы работы:</strong> <span id="establishmentHours">12:00 - 00:00</span></p>
+                            <p><strong>Телефон:</strong> <span id="establishmentPhone">+7 (123) 456-78-90</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="establishment-content card">
+                <div class="tabs-navigation">
+                    <button class="tab-link active" data-tab="hall-plan">План зала</button>
+                    <button class="tab-link" data-tab="menu" id="menuTabButton" style="display: none;">Меню</button>
+                    <button class="tab-link" data-tab="details">Подробнее</button>
+                    </div>
+
+                <div class="tabs-content">
+                    <div id="hall-plan" class="tab-pane active">
+                        <h2>Выберите зал и место</h2>
+                        <div class="hall-selector">
+                            <label for="hallSelect">Выберите зал:</label>
+                            <select id="hallSelect" name="hall">
+                                <option value="main_hall">Основной зал</option>
+                                <option value="vip_hall">VIP-комната</option>
+                            </select>
+                        </div>
+
+                        <div class="hall-map-container">
+                            <div class="hall-map" id="currentHallMap">
+                                <p class="hall-map-placeholder">Выберите зал для отображения плана.</p>
+                                </div>
+                        </div>
+                        
+                        <div class="booking-controls">
+                            <h3>Ваше бронирование</h3>
+                            <div class="form-group">
+                                <label for="bookingDateTime">Дата и время:</label>
+                                <input type="datetime-local" id="bookingDateTime" name="bookingDateTime">
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingPeopleCount">Количество человек:</label>
+                                <input type="number" id="bookingPeopleCount" name="bookingPeopleCount" min="1" value="2">
+                            </div>
+                            <div class="selected-places-info">
+                                Выбрано мест: <span id="selectedPlacesCount">0</span>
+                                <div id="selectedPlacesList"></div>
+                            </div>
+                            <button id="confirmBookingBtn" class="btn btn-primary btn-large" disabled>Забронировать выбранные места</button>
+                        </div>
+                    </div>
+
+                    <div id="menu" class="tab-pane">
+                        <h2>Меню ресторана</h2>
+                        <div class="menu-categories" id="menuCategories">
+                            <div class="menu-category">
+                                <h3>Закуски</h3>
+                                <div class="menu-item">
+                                    <div class="menu-item-info">
+                                        <h4>Брускетта с томатами</h4>
+                                        <p class="menu-item-description">Хрустящий хлеб, свежие томаты, базилик, оливковое масло.</p>
+                                    </div>
+                                    <p class="menu-item-price">350 ₽</p>
+                                </div>
+                                </div>
+                            <div class="menu-category">
+                                <h3>Горячие блюда</h3>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div id="details" class="tab-pane">
+                        <h2>Подробная информация</h2>
+                        <p>Здесь будет дополнительное описание заведения, особенности, возможно, фотогалерея.</p>
+                        <div class="photo-gallery">
+                            </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year">2025</span> Minity. Все права защищены.</p>
+            <p><a href="#top">Наверх</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script> <script src="js/establishment.js"></script> </body>
+</html>

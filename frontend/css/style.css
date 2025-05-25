@@ -1,0 +1,750 @@
+/* Глобальные переменные и сброс */
+:root {
+    --primary-color: #7c4dff; /* Фиолетовый акцент */
+    --primary-color-dark-theme: #9e7bff;
+    --secondary-color: #6c757d;
+    --secondary-color-dark-theme: #495057;
+
+    --text-color-light: #212529; /* Темнее для лучшего контраста на светлом */
+    --text-color-dark: #e0e0e0;
+    --text-color-muted-light: #555;
+    --text-color-muted-dark: #b0b0b0;
+
+    --bg-light: #f8f9fa; /* Чуть другой светлый фон */
+    --bg-dark: #1A1D24; /* Новый вариант темного фона */
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #2C2F3B; /* Новый вариант фона карточек на темном */
+    --border-color-light: #dee2e6; /* Светлее граница */
+    --border-color-dark: #495057;   /* Темнее граница на темном */
+
+    --font-main: 'Roboto', sans-serif;
+    --font-headings: 'Montserrat', sans-serif;
+
+    --box-shadow-light: 0 4px 12px rgba(0,0,0,0.08);
+    --box-shadow-dark: 0 4px 15px rgba(0,0,0,0.25); /* Чуть интенсивнее тень */
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; 
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.2s ease-in-out;
+}
+a:hover {
+    text-decoration: underline;
+    color: #5630c2; /* Темнее при наведении для светлой темы */
+}
+.dark-theme a {
+    color: var(--primary-color-dark-theme);
+}
+.dark-theme a:hover {
+    color: #b99eff; /* Светлее при наведении для темной темы */
+}
+
+
+/* Темы */
+.light-theme {
+    background-color: var(--bg-light);
+    color: var(--text-color-light);
+}
+.dark-theme {
+    background-color: var(--bg-dark);
+    color: var(--text-color-dark);
+}
+
+/* Утилиты */
+.container {
+    width: 90%;
+    max-width: 1140px; 
+    margin: 0 auto;
+    padding: 0 15px; 
+}
+
+.section-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-headings);
+    font-size: 2.2em; 
+    font-weight: 700;
+    margin-bottom: 45px;
+}
+.light-theme .section-title { /* Добавляем явные цвета, если они отличаются от body */
+    color: #343a40;
+}
+.dark-theme .section-title {
+    color: #f8f9fa;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    font-family: var(--font-headings);
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease-out, transform 0.1s ease-out, box-shadow 0.2s ease-out;
+    text-align: center;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: #6a35d9; 
+}
+.dark-theme .btn-primary {
+    background-color: var(--primary-color-dark-theme);
+    color: var(--bg-dark); 
+}
+.dark-theme .btn-primary:hover {
+    background-color: #8a63e2;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+.dark-theme .btn-secondary {
+    background-color: var(--secondary-color-dark-theme);
+    color: var(--text-color-dark);
+}
+.dark-theme .btn-secondary:hover {
+    background-color: #3c4146;
+}
+
+.btn-large {
+    padding: 14px 28px;
+    font-size: 1.1em;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-link {
+    color: var(--primary-color);
+    font-weight: bold;
+    background: none;
+    padding: 0;
+}
+.btn-link:hover {
+    transform: none;
+    box-shadow: none;
+    text-decoration: underline;
+}
+.dark-theme .btn-link {
+    color: var(--primary-color-dark-theme);
+}
+
+.card {
+    background: var(--card-bg-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    overflow: hidden; /* Добавлено, чтобы скругление углов работало с partner-image */
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+.dark-theme .card {
+    background: var(--card-bg-dark);
+    border: 1px solid var(--border-color-dark);
+    box-shadow: var(--box-shadow-dark);
+}
+.dark-theme .card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Шапка */
+header {
+    background: var(--card-bg-light);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+.dark-theme header {
+    background: var(--card-bg-dark); /* Использовал --card-bg-dark для консистентности */
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-family: var(--font-headings);
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.dark-theme header .logo {
+    color: var(--primary-color-dark-theme);
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quick-search-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quick-search-form select,
+.quick-search-form input[type="number"] {
+    padding: 7px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color-light);
+    font-size: 0.85em;
+    background-color: #fff; /* Явный белый фон для светлой темы */
+    color: var(--text-color-light);
+    max-width: 120px;
+}
+.quick-search-form input[type="number"] {
+    max-width: 80px;
+}
+
+.dark-theme .quick-search-form select,
+.dark-theme .quick-search-form input[type="number"] {
+    background-color: #333740; /* Чуть темнее основного фона карточек для полей */
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-color-dark);
+}
+.dark-theme .quick-search-form input[type="number"]::placeholder {
+    color: #888;
+}
+
+.quick-search-form .btn-search-header {
+    padding: 7px 12px;
+    font-size: 0.85em;
+    /* Уже стилизовано через .btn и .btn-primary/.btn-secondary */
+}
+
+.btn-theme-toggle {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 7px 12px;
+    font-size: 0.85em;
+}
+.dark-theme .btn-theme-toggle {
+    border: 1px solid var(--primary-color-dark-theme);
+    color: var(--primary-color-dark-theme);
+}
+#login-register-btn-header {
+    padding: 7px 15px;
+    font-size: 0.85em;
+}
+
+/* Блок 1 - Обложка */
+.hero-block {
+    min-height: 55vh; /* Уменьшил немного, чтобы форма поиска не была слишком низко */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 40px 20px; /* Уменьшил padding */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover; /* Пример фона ресторана */
+    filter: brightness(0.45); /* Затемнение фона */
+    z-index: -1;
+}
+.dark-theme .hero-background {
+    filter: brightness(0.35); /* Еще темнее для темной темы */
+}
+
+.hero-content h1 {
+    font-family: var(--font-headings);
+    font-size: 3.2em;
+    margin-bottom: 0.3em;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5); /* Усиленная тень текста */
+}
+
+.hero-content .slogan {
+    font-size: 1.25em;
+    margin-bottom: 35px;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Секция поиска */
+.search-section-block {
+    background-color: var(--bg-light); /* Фон как у body для светлой темы */
+    padding: 40px 0;
+    margin-top: 0; /* Убрал наложение */
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid var(--border-color-light); /* Разделитель */
+}
+.dark-theme .search-section-block {
+    background-color: var(--bg-dark);  /* Фон как у body для темной темы */
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.booking-search-form-main { /* Это теперь карточка, общие стили .card уже применяются */
+    padding: 30px 35px;
+    text-align: center;
+}
+
+.booking-search-form-main h2 {
+    font-family: var(--font-headings);
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    font-weight: 500;
+}
+
+.booking-search-form-main .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.booking-search-form-main .form-group {
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+}
+.booking-search-form-main .form-group:last-child { /* Для кнопки Поиск */
+     flex-grow: 0.5; /* Чтобы кнопка не растягивалась слишком сильно */
+}
+
+
+.booking-search-form-main label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+.booking-search-form-main input[type="datetime-local"],
+.booking-search-form-main input[type="number"],
+.booking-search-form-main select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color-light);
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: var(--card-bg-light);
+    color: var(--text-color-light);
+}
+.dark-theme .booking-search-form-main input[type="datetime-local"],
+.dark-theme .booking-search-form-main input[type="number"],
+.dark-theme .booking-search-form-main select {
+    background-color: #333740; /* Отличается от фона карточки */
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-color-dark);
+}
+.dark-theme .booking-search-form-main input::placeholder {
+    color: #999;
+}
+
+.booking-search-form-main .form-group button {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+/* Блок 2 - "Что можно забронировать" */
+.feature-items {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.feature-item { /* Использует класс .card */
+    text-align: center;
+    flex-basis: calc(50% - 15px); 
+    max-width: 450px;
+    padding: 30px; /* Увеличил внутренний отступ */
+}
+.feature-icon-placeholder {
+    font-size: 3em;
+    margin-bottom: 15px;
+    line-height: 1;
+    color: var(--primary-color);
+}
+.dark-theme .feature-icon-placeholder {
+    color: var(--primary-color-dark-theme);
+}
+.feature-item h3 {
+    font-family: var(--font-headings);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.feature-item p {
+    font-size: 1em;
+    color: var(--text-color-muted-light);
+    line-height: 1.7;
+}
+.dark-theme .feature-item p {
+    color: var(--text-color-muted-dark);
+}
+
+/* Блок 3 - "Наши партнёры" */
+.partner-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.partner-item { /* Использует класс .card, padding убран в .card, чтобы изображение прилегало */
+    text-align: center;
+    flex-basis: calc(33.333% - 20px);
+    min-width: 280px;
+    max-width: 350px;
+    display: flex; /* Добавлено */
+    flex-direction: column; /* Добавлено */
+}
+.partner-item .partner-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    /* border-radius уже будет от .card, если overflow: hidden на .card */
+    /* margin-bottom: 0; Если padding у partner-info-content будет сверху */
+}
+.partner-item .partner-info-content {
+    padding: 20px;
+    flex-grow: 1; /* Чтобы контент занимал оставшееся место и кнопки были внизу */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределяет пространство */
+}
+.partner-item .partner-info-content p {
+    margin-bottom: auto; /* Заставляет описание занимать место, отодвигая кнопку вниз */
+    padding-bottom: 15px; /* Отступ перед кнопкой */
+}
+.partner-item h3 {
+    font-family: var(--font-headings);
+    font-size: 1.4em;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.partner-item p {
+    font-size: 0.95em;
+    color: var(--text-color-muted-light);
+    line-height: 1.6;
+}
+.dark-theme .partner-item p {
+    color: var(--text-color-muted-dark);
+}
+
+/* Блок 4 - "Отзывы" */
+.review-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.review-card { /* Использует класс .card */
+    text-align: left;
+    flex-basis: calc(33.333% - 20px);
+    min-width: 280px;
+    max-width: 350px;
+    padding: 25px;
+}
+/* .review-avatar - удалены стили, так как аватары убраны */
+.review-card h4 {
+    font-family: var(--font-headings);
+    font-size: 1.1em;
+    font-weight: 700; /* Сделал жирнее */
+    margin-bottom: 5px;
+}
+.review-rating {
+    color: #f5a623;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+.review-card p {
+    font-size: 0.95em;
+    font-style: italic;
+    color: var(--text-color-muted-light);
+    line-height: 1.7;
+    margin-bottom: 0; /* Убрал нижний отступ у параграфа отзыва */
+}
+.dark-theme .review-card p {
+     color: var(--text-color-muted-dark);
+}
+
+/* Подвал */
+footer {
+    background: #2a2a45; /* Темнее для контраста с --bg-light */
+    color: #adb5bd; 
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+    font-size: 0.9em;
+}
+.dark-theme footer {
+    background: #17191f; /* Еще темнее для темной темы */
+    border-top: 1px solid var(--border-color-dark);
+}
+footer p {
+    margin-bottom: 5px;
+}
+footer a {
+    color: #dee2e6;
+}
+.dark-theme footer a {
+    color: var(--primary-color-dark-theme);
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    align-items: center; /* Для вертикального центрирования, если modal-content имеет margin auto */
+    justify-content: center; /* Для горизонтального центрирования */
+}
+/* Чтобы display:flex для центрирования работал, нужно чтобы modal был flex контейнером, когда он display:block (через JS) */
+/* body.modal-open .modal { display: flex; } */
+
+
+.modal-content {
+    background-color: var(--card-bg-light);
+    /* margin: 10% auto; Убрали, если modal - flex контейнер */
+    padding: 30px;
+    border: 1px solid var(--border-color-light);
+    width: 90%;
+    max-width: 450px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    position: relative;
+    /* Для display:flex в .modal, эти свойства не нужны для центрирования */
+    /* margin-left: auto; margin-right: auto; */
+}
+.dark-theme .modal-content {
+    background-color: var(--card-bg-dark);
+    border: 1px solid var(--border-color-dark);
+    box-shadow: var(--box-shadow-dark);
+}
+
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px; /* Ближе к краю */
+    right: 15px; /* Ближе к краю */
+    font-size: 32px; /* Крупнее */
+    font-weight: bold;
+    line-height: 1;
+}
+.close-btn:hover,
+.close-btn:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+.dark-theme .close-btn {
+    color: #888;
+}
+.dark-theme .close-btn:hover,
+.dark-theme .close-btn:focus {
+    color: var(--text-color-dark);
+}
+
+#auth-form-container h3 {
+    text-align: center;
+    font-family: var(--font-headings);
+    margin-bottom: 25px;
+    font-size: 1.6em;
+}
+.auth-form .form-group {
+    margin-bottom: 18px; /* Увеличил отступ */
+}
+.auth-form label {
+    display: block;
+    margin-bottom: 6px; /* Немного увеличил */
+    font-weight: 500;
+    font-size: 0.9em;
+}
+.auth-form input[type="text"],
+.auth-form input[type="tel"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color-light);
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: #fff;
+}
+.dark-theme .auth-form input[type="text"],
+.dark-theme .auth-form input[type="tel"],
+.dark-theme .auth-form input[type="email"],
+.dark-theme .auth-form input[type="password"] {
+    background-color: #333740;
+    color: var(--text-color-dark);
+    border: 1px solid var(--border-color-dark);
+}
+.dark-theme .auth-form input::placeholder {
+    color: #888;
+}
+
+.auth-form button {
+    margin-top: 15px; /* Увеличил отступ */
+}
+.form-switch-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) { 
+    .partner-item, .review-card {
+        flex-basis: calc(50% - 15px);
+    }
+    .booking-search-form-main .form-group {
+        min-width: calc(50% - 10px); /* По два поля в ряд на планшетах для основной формы поиска */
+    }
+     .booking-search-form-main .form-group:last-child { /* Кнопка на всю ширину */
+        min-width: 100%;
+        flex-grow: 1;
+    }
+}
+
+@media (max-width: 768px) { 
+    .section-title {
+        font-size: 1.8em;
+    }
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content .slogan {
+        font-size: 1.1em;
+    }
+    
+    header .container {
+        flex-direction: column;
+        gap: 15px; /* Увеличил gap */
+    }
+    header nav {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+    header .quick-search-form {
+        width: 100%;
+        flex-direction: column; /* Форма в шапке тоже столбиком */
+    }
+    .quick-search-form select,
+    .quick-search-form input[type="number"],
+    .quick-search-form .btn-search-header {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .booking-search-form-main .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .booking-search-form-main .form-group {
+        min-width: 100%;
+        margin-bottom: 15px; /* Увеличил отступ */
+    }
+     .booking-search-form-main .form-group:last-child {
+        margin-bottom: 0;
+    }
+
+    .feature-item, .partner-item, .review-card {
+        flex-basis: 100%;
+        max-width: none;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10% auto; /* Возвращаем margin для мобильных, если не используем flex для .modal */
+        padding: 25px; /* Немного уменьшил для мобильных */
+    }
+}
+
+@media (max-width: 480px) { /* Совсем маленькие экраны */
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content .slogan {
+        font-size: 1em;
+    }
+    .section-title {
+        font-size: 1.6em;
+    }
+    header .logo {
+        font-size: 1.6em;
+    }
+     .btn-large {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Minity Web App (Go + PostgreSQL)",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "forwardPorts": [8080, 5432],
+  "postCreateCommand": "cd backend && go mod tidy",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.Go",
+        "ms-azuretools.vscode-docker",
+        "cweijan.vscode-postgresql-client2"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}

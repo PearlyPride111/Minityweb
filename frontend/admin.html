@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minity - Админ-панель</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="light-theme">
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-link"><div class="logo">Minity (Админ)</div></a>
+            <nav>
+                <button id="theme-toggle-btn" class="btn btn-theme-toggle" title="Сменить тему">Сменить тему</button>
+                <button id="logoutAdminBtn" class="btn btn-secondary" style="display: none;">Сменить заведение</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-page section-padding">
+        <div class="container">
+
+            <section id="adminLoginSection" class="card auth-card">
+                <h2>Выберите заведение для управления (Демо)</h2>
+                <div class="admin-choice-buttons">
+                    <button id="loginAsVistaAdminBtn" class="btn btn-primary btn-block" data-owner-id="1" data-admin-name="Admin Vista">Управлять "Ресторан Vista"</button>
+                    <button id="loginAsMostHubAdminBtn" class="btn btn-primary btn-block" data-owner-id="2" data-admin-name="Admin MostHub">Управлять "Most IT Hub"</button>
+                </div>
+                <p id="adminLoginError" class="error-message" style="display: none;"></p>
+            </section>
+
+            <section id="establishmentManagementSection" style="display: none;">
+                <h2 id="adminWelcomeMessage">Панель управления заведением</h2>
+                
+                <div class="card establishment-details-admin">
+                    <h3>Редактировать информацию о заведении:</h3>
+                    <input type="hidden" id="currentEstablishmentIdStore">
+                    <input type="hidden" id="currentOwnerIdStore">
+                    <div class="form-group">
+                        <label for="adminEstNameInput">Название:</label>
+                        <input type="text" id="adminEstNameInput" class="form-control-admin">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminEstTypeDisplay">Тип:</label>
+                        <span id="adminEstTypeDisplay"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="adminEstAddressInput">Адрес:</label>
+                        <input type="text" id="adminEstAddressInput" class="form-control-admin">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminEstHoursInput">Часы работы:</label>
+                        <input type="text" id="adminEstHoursInput" class="form-control-admin">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminEstDescriptionInput">Описание:</label>
+                        <textarea id="adminEstDescriptionInput" rows="5" class="form-control-admin" placeholder="Описание заведения..."></textarea>
+                    </div>
+                    <button id="saveEstablishmentChangesBtn" class="btn btn-primary btn-block">Сохранить изменения инфо</button>
+                    <p id="adminEstUpdateStatus" class="status-message" style="display: none;"></p>
+                </div>
+
+                <div class="card hall-management-admin">
+                    <h3>Управление залами</h3>
+                    <div id="adminHallList">
+                        <h4>Существующие залы:</h4>
+                        <ul id="hallsListContainer">
+                            <li>Загрузка...</li>
+                        </ul>
+                    </div>
+                    <hr class="admin-divider">
+                    <h4>Добавить новый зал:</h4>
+                    <form id="adminAddHallForm" class="sub-form">
+                        <div class="form-group">
+                            <label for="newHallName">Название зала:</label>
+                            <input type="text" id="newHallName" class="form-control-admin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newHallDescription">Описание зала (опционально):</label>
+                            <textarea id="newHallDescription" rows="3" class="form-control-admin"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="newHallCapacity">Вместимость (чел.):</label>
+                            <input type="number" id="newHallCapacity" class="form-control-admin" min="0" value="0">
+                        </div>
+                        <div class="form-group form-group-checkbox">
+                            <input type="checkbox" id="newHallAirConditioner" class="form-check-input">
+                            <label for="newHallAirConditioner" class="form-check-label">Есть кондиционер</label>
+                        </div>
+                        <button type="submit" class="btn btn-success">Добавить зал</button>
+                        <p id="adminAddHallStatus" class="status-message" style="display: none;"></p>
+                    </form>
+                </div>
+
+                <div class="card menu-management-admin" style="display: none;">
+                    <h3>Управление меню</h3>
+                    <div id="adminMenuList">
+                        <p>Загрузка меню...</p>
+                    </div>
+                     <p style="margin-top:15px;"><em>(Конструктор меню будет здесь)</em></p>
+                </div>
+            </section>
+
+            <section id="placeManagementSection" class="card" style="display: none;">
+                <h2 id="placeManagementTitle">Управление местами в зале: <span id="placeManagementHallName"></span></h2>
+                <button id="backToHallsBtn" class="btn btn-secondary btn-sm mb-20">← Назад к управлению залами</button>
+                
+                <div class="place-editor-layout">
+                    <div class="admin-hall-preview-container">
+                        <h4>Предпросмотр зала:</h4>
+                        <div class="admin-hall-map" id="adminHallMapPreview">
+                            <p class="hall-map-placeholder">Загрузка схемы...</p>
+                        </div>
+                    </div>
+
+                    <div class="admin-place-form-container sub-form">
+                        <h4 id="adminPlaceFormTitle">Добавить новое место</h4>
+                        <form id="adminPlaceForm">
+                            <input type="hidden" id="editingPlaceId">
+                            <div class="form-group">
+                                <label for="placeName">Имя/Номер места (напр. A1, Стол 5):</label>
+                                <input type="text" id="placeName" class="form-control-admin" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="placeType">Тип места (напр. table-2, desk):</label>
+                                <input type="text" id="placeType" class="form-control-admin">
+                            </div>
+                            <div class="form-group">
+                                <label for="placeCoordX">Координата X (%):</label>
+                                <input type="number" id="placeCoordX" class="form-control-admin" min="0" max="100" step="1" required placeholder="0-100">
+                            </div>
+                            <div class="form-group">
+                                <label for="placeCoordY">Координата Y (%):</label>
+                                <input type="number" id="placeCoordY" class="form-control-admin" min="0" max="100" step="1" required placeholder="0-100">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" id="savePlaceBtn" class="btn btn-success">Добавить место</button>
+                                <button type="button" id="cancelEditPlaceBtn" class="btn btn-light" style="display: none;">Отмена</button>
+                            </div>
+                            <p id="adminPlaceFormStatus" class="status-message" style="display: none;"></p>
+                        </form>
+                    </div>
+                </div>
+
+                <hr class="admin-divider">
+                <h4>Существующие места в зале: <span id="currentEditingHallNameForList"></span></h4>
+                <ul id="placesListContainerAdmin">
+                    <li>Загрузка...</li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year">2025</span> Minity. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <div id="editHallModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeEditHallModalBtn" title="Закрыть">&times;</span>
+            <h3>Редактировать зал</h3>
+            <form id="editHallForm" class="sub-form">
+                <input type="hidden" id="editHallId">
+                <div class="form-group">
+                    <label for="editHallName">Название зала:</label>
+                    <input type="text" id="editHallName" class="form-control-admin" required>
+                </div>
+                <div class="form-group">
+                    <label for="editHallDescription">Описание зала (опционально):</label>
+                    <textarea id="editHallDescription" rows="3" class="form-control-admin"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editHallCapacity">Вместимость (чел.):</label>
+                    <input type="number" id="editHallCapacity" class="form-control-admin" min="0">
+                </div>
+                <div class="form-group form-group-checkbox">
+                    <input type="checkbox" id="editHallAirConditioner" class="form-check-input">
+                    <label for="editHallAirConditioner" class="form-check-label">Есть кондиционер</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Сохранить изменения зала</button>
+                <p id="editHallStatus" class="status-message" style="display: none;"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/script.js"></script> 
+</body>
+</html>

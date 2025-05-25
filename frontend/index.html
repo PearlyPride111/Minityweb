@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minity - Онлайн-бронирование</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="light-theme">
+
+    <header>
+        <div class="container">
+            <div class="logo">Minity</div>
+            <nav>
+                <form id="quick-search-form-header" class="quick-search-form">
+                    <select name="establishment_type_header" id="establishment_type_header" title="Тип заведения">
+                        <option value="restaurant">Ресторан</option>
+                        <option value="coworking">Коворкинг</option>
+                    </select>
+                    <input type="number" name="people_count_header" id="people_count_header" placeholder="Кол-во" title="Количество человек" min="1">
+                    <button type="submit" class="btn-search-header" title="Найти">Найти</button>
+                </form>
+                <button id="theme-toggle-btn" class="btn btn-theme-toggle" title="Сменить тему">Сменить тему</button>
+                <button id="login-register-btn-header" class="btn btn-secondary" title="Войти или зарегистрироваться">Войти</button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-block">
+        <div class="hero-background">
+        </div>
+        <div class="container hero-content">
+            <h1>Minity</h1>
+            <p class="slogan">Удобное онлайн-бронирование ресторанов и коворкингов</p>
+            <button id="book-now-hero-btn" class="btn btn-primary btn-large">Забронировать место</button>
+        </div>
+    </section>
+
+    <section id="search-section" class="search-section-block">
+        <div class="container">
+            <form id="booking-search-form-main" class="booking-search-form-main">
+                <h2>Найдите идеальное место</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="establishment_type_main">Тип заведения:</label>
+                        <select name="establishment_type_main" id="establishment_type_main">
+                            <option value="">Выберите тип</option>
+                            <option value="restaurant">Ресторан</option>
+                            <option value="coworking">Коворкинг</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking_time_main">Время бронирования:</label>
+                        <input type="datetime-local" name="booking_time_main" id="booking_time_main">
+                    </div>
+                    <div class="form-group">
+                        <label for="people_count_main">Кол-во человек:</label>
+                        <input type="number" name="people_count_main" id="people_count_main" min="1" value="2" placeholder="2">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Поиск</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="features" class="features-block section-padding">
+        <div class="container">
+            <h2 class="section-title">Что можно забронировать</h2>
+            <div class="feature-items">
+                <div class="feature-item card">
+                    <div class="feature-icon-placeholder">🍽️</div>
+                    <h3>Рестораны</h3>
+                    <p>Быстрое и удобное бронирование столиков в лучших ресторанах. Выбирайте зал и место визуально.</p>
+                </div>
+                <div class="feature-item card">
+                    <div class="feature-icon-placeholder">💻</div>
+                    <h3>Коворкинги</h3>
+                    <p>Найдите идеальное рабочее место, переговорную комнату или офис на день. Просто и эффективно.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners" class="partners-block section-padding">
+        <div class="container">
+            <h2 class="section-title">Наши партнёры</h2>
+            <div class="partner-items">
+                <div class="partner-item card">
+                    <img src="https://i.ibb.co/DPjqjR0h/MOST-IT-Hub-Almaty-I-2.jpg" alt="Коворкинг Most IT Hub" class="partner-image">
+                    <div class="partner-info-content">
+                        <h3>Коворкинг "Most IT Hub"</h3>
+                        <p>Современный и технологичный коворкинг в центре города для продуктивной работы.</p>
+                        <a href="establishment.html?id=2" class="btn-link">Подробнее &rarr;</a>  </div>
+                </div>
+                <div class="partner-item card">
+                    <img src="https://i.ibb.co/QRYvJTp/vista.jpg" alt="Ресторан Vista" class="partner-image">
+                    <div class="partner-info-content">
+                        <h3>Ресторан "Vista"</h3>
+                        <p>Ресторан с панорамным видом на город и изысканной европейской кухней.</p>
+                        <a href="establishment.html?id=1" class="btn-link">Подробнее &rarr;</a>  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="reviews-block section-padding">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших пользователей</h2>
+            <div class="review-items">
+                <div class="review-card card">
+                    <h4>Анна К.</h4>
+                    <div class="review-rating">★★★★☆</div>
+                    <p>"Очень удобное приложение! Быстро нашла и забронировала столик в любимом ресторане. Понравился выбор мест на схеме."</p>
+                </div>
+                <div class="review-card card">
+                    <h4>Иван П.</h4>
+                    <div class="review-rating">★★★★★</div>
+                    <p>"Наконец-то нормальный сервис для брони коворкингов. Визуальный выбор места – супер! Экономит много времени."</p>
+                </div>
+                 <div class="review-card card">
+                    <h4>Елена М.</h4>
+                    <div class="review-rating">★★★★★</div>
+                    <p>"Пользуюсь Minity для бронирования переговорных. Всегда все четко, без накладок. Рекомендую!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year">2025</span> Minity. Все права защищены.</p>
+            <p class="admin-login-link"><a href="admin.html">Вход для администратора</a></p>
+            <p><a href="#top">Наверх</a></p>
+        </div>
+    </footer>
+
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" title="Закрыть">&times;</span>
+            <div id="auth-form-container">
+                <h3>Вход / Регистрация</h3>
+                <form id="login-form" class="auth-form">
+                    <h4>Вход</h4>
+                    <div class="form-group">
+                        <label for="login-phone">Номер телефона:</label>
+                        <input type="tel" id="login-phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Пароль:</label>
+                        <input type="password" id="login-password" name="password" required placeholder="Ваш пароль">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                    <p class="form-switch-link">Нет аккаунта? <a href="#" id="show-register-form-link">Зарегистрироваться</a></p>
+                </form>
+
+                <form id="register-form" class="auth-form" style="display:none;">
+                    <h4>Регистрация</h4>
+                    <div class="form-group">
+                        <label for="register-name">Имя:</label>
+                        <input type="text" id="register-name" name="name" required placeholder="Ваше имя">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-phone">Номер телефона:</label>
+                        <input type="tel" id="register-phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email (по желанию):</label>
+                        <input type="email" id="register-email" name="email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Пароль:</label>
+                        <input type="password" id="register-password" name="password" required placeholder="Придумайте пароль (мин. 8 симв.)">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                    <p class="form-switch-link">Уже есть аккаунт? <a href="#" id="show-login-form-link">Войти</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

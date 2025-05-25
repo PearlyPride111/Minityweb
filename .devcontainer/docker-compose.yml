@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/go:1-1.22-bookworm 
+    volumes:
+      - ..:/workspaces/${localWorkspaceFolderBasename}:cached
+    command: sleep infinity
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=minity_user
+      - DB_PASSWORD=minity_password
+      - DB_NAME=minity_db
+      - DB_SSLMODE=disable
+      - PORT=8080
+      - JWT_SECRET=ВАШ_СУПЕР_СЛОЖНЫЙ_И_ДЛИННЫЙ_СЕКРЕТНЫЙ_КЛЮЧ_MINITY # ЗАМЕНИТЕ ЭТО или установите в секретах Codespace
+    depends_on:
+      db:
+        condition: service_healthy
+    user: vscode
+
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    volumes:
+      # ИЗМЕНЕНО: Монтируем локальную папку .db_data (относительно корня проекта)
+      # в /var/lib/postgresql/data внутри контейнера db.
+      # Директория ../.db_data/pg_data означает, что папка .db_data будет создана в корне вашего проекта Minityweb.
+      - ../.db_data/pg_data:/var/lib/postgresql/data 
+      - ../migrations/001_initial_schema.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_USER=minity_user
+      - POSTGRES_PASSWORD=minity_password
+      - POSTGRES_DB=minity_db
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U minity_user -d minity_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# Секция volumes: postgres_data_minity: УДАЛЕНА
+# volumes:
+#   postgres_data_minity:
